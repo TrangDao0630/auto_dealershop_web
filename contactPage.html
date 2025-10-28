@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us • AutoHub Motors</title>
+  <meta name="description" content="Contact AutoHub Motors for test drives, financing questions, trade‑ins, and more." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --accent: #3b82f6;
+      --accent-2: #22c55e;
+      --danger: #ef4444;
+      --ring: rgba(59,130,246,.45);
+    }
+    * { box-sizing: border-box }
+    html, body { height: 100% }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 10% 10%, rgba(59,130,246,.1), transparent 50%),
+                  radial-gradient(1200px 800px at 90% 0%, rgba(34,197,94,.08), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    a { color: var(--accent) }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      padding: 0;
+      margin: 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      opacity: .8;
+    }
+    nav a:hover { opacity: 1 }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+    }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr }
+    }
+
+    .card {
+      background: linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,.02)), var(--card);
+      border: 1px solid rgba(148,163,184,.15);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      font-size: clamp(24px, 3vw, 34px);
+      margin: 10px 0 8px;
+    }
+    p.lead { color: var(--muted); margin-top: 0 }
+
+    form { display: grid; gap: 16px }
+    .field { display: grid; gap: 8px }
+    label { font-weight: 600 }
+    .required::after { content: " *"; color: var(--danger) }
+
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(148,163,184,.25);
+      background: #0b1220;
+      color: var(--text);
+      outline: none;
+      transition: box-shadow .15s ease, border-color .15s ease, transform .04s ease;
+    }
+    textarea { min-height: 120px; resize: vertical }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--ring);
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 720px) { .row { grid-template-columns: 1fr } }
+
+    .help { color: var(--muted); font-size: 14px }
+    .error { color: var(--danger); font-size: 14px; display: none }
+
+    .actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap }
+    button[type="submit"] {
+      appearance: none;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), #2563eb);
+      color: white;
+      box-shadow: 0 10px 18px rgba(37,99,235,.35);
+      transform: translateY(0);
+      transition: transform .08s ease, filter .15s ease;
+    }
+    button[type="submit"]:hover { filter: brightness(1.05) }
+    button[type="submit"]:active { transform: translateY(1px) }
+
+    .success {
+      display: none;
+      padding: 14px 16px;
+      border: 1px solid rgba(34,197,94,.35);
+      background: rgba(34,197,94,.08);
+      color: #bbf7d0;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .dealer-card {
+      display: grid;
+      gap: 16px;
+    }
+    .map {
+      aspect-ratio: 16 / 10;
+      width: 100%;
+      border: 0;
+      border-radius: 14px;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .meta { color: var(--muted) }
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,.25);
+      background: rgba(255,255,255,.03);
+      font-size: 12px;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">AH</div>
+        <div>
+          <div style="font-weight:800">AutoHub Motors</div>
+          <div class="meta" style="font-size:14px">Drive home happy</div>
+        </div>
+      </div>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/inventory.html">Inventory</a></li>
+          <li><a href="/financing.html">Financing</a></li>
+          <li><a href="/contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="grid">
+      <section class="card" aria-labelledby="contactTitle">
+        <h1 id="contactTitle">Contact us</h1>
+        <p class="lead">Set up a test drive, ask about financing, or get a quick trade‑in estimate. We reply within one business day.</p>
+
+        <div id="success" class="success" role="status" aria-live="polite">Thanks for reaching out. Your message has been received.</div>
+
+        <form id="contactForm" novalidate>
+          <div class="row">
+            <div class="field">
+              <label for="name" class="required">Full name</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Alex Johnson" required />
+              <div class="error" id="error-name">Please enter your name</div>
+            </div>
+            <div class="field">
+              <label for="email" class="required">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="alex@example.com" required />
+              <div class="error" id="error-email">Enter a valid email</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="(555) 123‑4567" />
+              <div class="help">Optional but helps us contact you fast</div>
+            </div>
+            <div class="field">
+              <label for="preferredContact" class="required">Preferred contact</label>
+              <select id="preferredContact" name="preferredContact" required>
+                <option value="">Select one</option>
+                <option>Email</option>
+                <option>Phone</option>
+                <option>Text</option>
+              </select>
+              <div class="error" id="error-preferred">Please choose a contact method</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="interest">Vehicle of interest</label>
+              <input id="interest" name="interest" type="text" placeholder="2022 Honda Civic EX" />
+            </div>
+            <div class="field">
+              <label for="date">Preferred appointment date</label>
+              <input id="date" name="date" type="date" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message" class="required">How can we help</label>
+            <textarea id="message" name="message" placeholder="Tell us about the car you want, trade‑in details, or any questions" required></textarea>
+            <div class="error" id="error-message">Please enter a short message</div>
+          </div>
+
+          <div class="field" style="display:flex; align-items:center; gap:10px">
+            <input id="consent" name="consent" type="checkbox" required />
+            <label for="consent" class="required" style="font-weight:500">You agree to be contacted about your inquiry</label>
+          </div>
+
+          <div class="actions">
+            <button type="submit">Send message</button>
+            <span class="help">By clicking send you agree to our <a href="#">privacy policy</a></span>
+          </div>
+        </form>
+      </section>
+
+      <aside class="card" aria-labelledby="visitTitle">
+        <h2 id="visitTitle" style="margin-top:6px">Visit our showroom</h2>
+        <p class="meta">1234 Market Street, San Jose, CA 95113</p>
+        <div class="dealer-card">
+          <iframe class="map" title="Map to AutoHub Motors"
+            src="https://www.google.com/maps?q=San%20Jose%20City%20Hall&output=embed"
+            loading="lazy" allowfullscreen></iframe>
+
+          <div class="meta">
+            <div class="badge">Open Mon to Sat 9am to 7pm</div>
+            <div>Call <a href="tel:+14085551234">(408) 555‑1234</a> or email <a href="mailto:hello@autohub.example">hello@autohub.example</a></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="meta" style="margin: 26px 0 8px">© <span id="year"></span> AutoHub Motors. All rights reserved.</footer>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm')
+    const success = document.getElementById('success')
+    const year = document.getElementById('year')
+    year.textContent = new Date().getFullYear()
+
+    const show = el => el.style.display = 'block'
+    const hide = el => el.style.display = 'none'
+
+    const validators = {
+      name: v => v.trim().length > 1,
+      email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+      message: v => v.trim().length > 4,
+      preferredContact: v => v.trim().length > 0,
+      consent: v => v === true,
+    }
+
+    function getValue(id) {
+      const el = document.getElementById(id)
+      return el.type === 'checkbox' ? el.checked : el.value
+    }
+
+    function setError(id, showIt) {
+      const err = document.getElementById(`error-${id}`)
+      if (!err) return
+      showIt ? show(err) : hide(err)
+    }
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault()
+
+      const data = {
+        name: getValue('name'),
+        email: getValue('email'),
+        phone: getValue('phone'),
+        preferredContact: getValue('preferredContact'),
+        interest: getValue('interest'),
+        date: getValue('date'),
+        message: getValue('message'),
+        consent: getValue('consent'),
+      }
+
+      let ok = true
+      for (const key of Object.keys(validators)) {
+        const valid = validators[key](data[key])
+        setError(key, !valid)
+        if (!valid) ok = false
+      }
+
+      if (!ok) {
+        hide(success)
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        return
+      }
+
+      try {
+        const submissions = JSON.parse(localStorage.getItem('ahm_submissions') || '[]')
+        submissions.push({ ...data, submittedAt: new Date().toISOString() })
+        localStorage.setItem('ahm_submissions', JSON.stringify(submissions))
+
+        show(success)
+        form.reset()
+      } catch (err) {
+        alert('Something went wrong. Please try again.')
+      }
+    })
+  </script>
+</body>
+</html>
