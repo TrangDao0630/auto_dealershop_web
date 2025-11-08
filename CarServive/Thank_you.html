@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoHub Bay Area - Thank You</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom blue color for the button */
+        .primary-button {
+            background-color: #2E5A9D;
+            transition: background-color 0.2s;
+        }
+        .primary-button:hover {
+            background-color: #1f3e69;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 flex flex-col min-h-screen">
+
+    <!-- App Container -->
+    <div class="max-w-7xl mx-auto w-full flex-grow">
+
+        <!-- Header -->
+        <header class="py-4 px-6 md:px-8 shadow-md">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <!-- LOGO IMAGE SOURCE: logo.png -->
+                    <img src="logo.png" alt="AutoHub Motors Logo" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/64x64/45a5f1/ffffff?text=LOGO';"
+                         class="h-16 w-16 rounded-full">
+                    <span class="font-bold text-3xl">AutoHub</span>
+                </div>
+                <nav class="hidden md:flex items-center space-x-6 text-sm">
+                    <a href="#" class="text-gray-600 hover:text-black">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-black">New Car</a>
+                    <a href="#" class="text-gray-600 hover:text-black">Pre-owned</a>
+                    <a href="#" class="text-black font-semibold border-b-2 border-black pb-1">Services</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-full text-sm hover:bg-blue-700 transition duration-300">Contact</a>
+                    <span class="font-semibold border border-gray-300 py-2 px-4 rounded-full text-sm">878 - 555 - 808</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="py-20 px-6 md:px-8 flex items-center justify-center">
+            <!-- Confirmation Message Box -->
+            <div class="max-w-xl text-center p-8 sm:p-12 bg-gray-50 rounded-xl shadow-lg border border-gray-200">
+                <div class="text-5xl text-green-500 mb-6">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1 class="text-4xl font-extrabold text-black mb-4">Request Submitted!</h1>
+                <p class="text-xl text-gray-700 mb-8">
+                    Thank you for submitting your service request. We will review your details and get back to you to confirm your appointment time **as soon as possible**.
+                </p>
+                <p class="text-gray-500 mb-10">
+                    A confirmation email will also be sent to your inbox shortly.
+                </p>
+                
+                <!-- Call to Action to return Home or visit Services -->
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <!-- Note: assuming your main page is index.html -->
+                    <a href="index.html" class="primary-button text-white font-semibold py-3 px-6 rounded-lg text-lg shadow-md hover:bg-black transition duration-300">
+                        Return to Home
+                    </a>
+                    <!-- Note: assuming you will create a services.html later -->
+                    <a href="services.html" class="bg-white border border-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-lg text-lg shadow-sm hover:bg-gray-100 transition duration-300">
+                        View Other Services
+                    </a>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12 px-6 md:px-8 border-t w-full">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-4">
+                        <!-- LOGO IMAGE SOURCE: logo.png -->
+                        <img src="logo.png" alt="AutoHub Motors Logo" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/64x64/45a5f1/ffffff?text=LOGO';"
+                             class="h-16 w-16 rounded-full">
+                        <span class="font-bold text-xl">AutoHub</span>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <nav class="grid grid-cols-2 gap-4 text-sm">
+                        <a href="#" class="text-gray-600 hover:text-black">Home</a>
+                        <a href="#" class="text-gray-600 hover:text-black">New Car</a>
+                        <a href="#" class="text-gray-600 hover:text-black">Pre-owned</a>
+                        <a href="#" class="text-gray-600 hover:text-black">Services</a>
+                        <a href="#" class="text-gray-600 hover:text-black">Test Drive</a>
+                        <a href="#" class="text-gray-600 hover:text-black">Contact</a>
+                    </nav>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Opening Hours</h4>
+                    <p class="text-gray-600 mt-2 text-sm">Monday-Saturday: 9am - 8pm</p>
+                    <p class="text-gray-600 text-sm">Sunday: 10am - 6pm</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                <p>&copy; 2025 AutoHub Bay Area. All Rights Reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-black"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-black"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="hover:text-black"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
