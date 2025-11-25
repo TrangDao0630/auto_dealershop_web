@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoHub Bay Area - Contact Us</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="landing_page.css">
+
+    <style>
+      body {
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <div>
+        <!-- HEADER -->
+        <header class="py-4 border-b border-gray-200">
+            <div class="px-6 md:px-8 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <img src="img/logo.png" alt="AutoHub Logo" class="h-20 w-20 rounded-full">
+                    <span class="font-bold text-2xl">AutoHub Motors</span>
+                </div>
+
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index.html" class="mt-3 text-lg text-gray-600">Home</a>
+                    <a href="#" class="mt-3 text-lg text-gray-600">New Car</a>
+                    <a href="#" class="mt-3 text-lg text-gray-600">Pre-owned</a>
+                    <a href="#" class="mt-3 text-lg text-gray-600">Services</a>
+                    <a href="contact.html" class="mt-3 text-lg text-gray-900 font-semibold">Contact</a>
+                </nav>
+
+                <div class="hidden lg:flex items-center gap-3">
+                    <button class="inline-flex px-4 py-1.5 rounded-full bg-black text-white text-sm font-semibold">
+                        Questions?
+                    </button>
+                    <span class="mt-3 text-lg text-gray-800">+669-555-1809</span>
+                </div>
+
+                <!-- Simple mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-gray-400" aria-controls="mobile-menu" aria-expanded="false">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="hidden md:hidden mt-4 px-6 md:px-8">
+                <nav class="flex flex-col space-y-2">
+                    <a href="index.html" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">Home</a>
+                    <a href="#" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">New Car</a>
+                    <a href="#" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">Pre-owned</a>
+                    <a href="#" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">Services</a>
+                    <a href="contact.html" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- MAIN -->
+        <main>
+            <section class="py-16">
+                <div class="px-6 md:px-8 max-w-4xl mx-auto">
+
+                    <!-- Page title and note -->
+                    <h1 class="text-4xl font-extrabold">Contact Form</h1>
+                    <p class="mt-3 text-sm text-gray-600 italic max-w-2xl">
+                        *Please note that response times may take 1 to 2 business days. By submitting this form, you agree to our terms and conditions.*
+                    </p>
+
+                    <!-- Section title -->
+                    <h2 class="mt-10 text-xl font-semibold">Contact Us</h2>
+
+                    <!-- Form -->
+                    <form class="mt-6 space-y-5" action="#" method="post"
+                          onsubmit="event.preventDefault(); alert('Thank you. Your message has been submitted.');">
+
+                        <!-- First and last name -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-gray-700">First name</label>
+                                <input
+                                    id="firstName"
+                                    name="firstName"
+                                    type="text"
+                                    required
+                                    class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+                                    placeholder="Jane"
+                                >
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-gray-700">Last name</label>
+                                <input
+                                    id="lastName"
+                                    name="lastName"
+                                    type="text"
+                                    required
+                                    class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+                                    placeholder="Smitherton"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                required
+                                class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+                                placeholder="email@janesfakedomain.net"
+                            >
+                        </div>
+
+                        <!-- Message + Submit aligned to right -->
+                        <div class="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto] gap-4 items-start">
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">Your message</label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="5"
+                                    required
+                                    class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+                                    placeholder="Enter your question or message"
+                                ></textarea>
+                            </div>
+                            <div class="flex md:items-center md:justify-center mt-2 md:mt-0">
+                                <button
+                                    type="submit"
+                                    class="px-8 py-2.5 rounded-md bg-black text-white font-semibold text-sm tracking-wide hover:bg-gray-900 transition-colors duration-200"
+                                >
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="py-12 border-t">
+            <div class="px-6 md:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <div class="flex items-center space-x-4">
+                            <img src="img/logo.png" class="h-20 w-20 rounded-full" alt="AutoHub logo">
+                            <span class="font-bold text-xl">AutoHub</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <nav class="grid grid-cols-2 gap-4">
+                            <a href="index.html" class="text-gray-600 hover:text-black">Home</a>
+                            <a href="#" class="text-gray-600 hover:text-black">New Car</a>
+                            <a href="#" class="text-gray-600 hover:text-black">Pre-owned</a>
+                            <a href="#" class="text-gray-600 hover:text-black">Services</a>
+                            <a href="contact.html" class="text-gray-600 hover:text-black">Contact</a>
+                        </nav>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">Opening Hours</h4>
+                        <p class="text-gray-600 mt-2">Monday to Saturday: 9am to 8pm</p>
+                        <p class="text-gray-600">Sunday: 10am to 6pm</p>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t flex flex-col md:flex-row justify-between items-center text-gray-500">
+                    <p>&copy; 2025 AutoHub Bay. All Rights Reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-500 hover:text-blue-600" aria-label="Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12Z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-pink-500" aria-label="Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm5.25-.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-black" aria-label="X">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153ZM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.405Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Toggle mobile nav -->
+    <script>
+      const btn = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+        });
+      }
+    </script>
+</body>
+</html>
+
