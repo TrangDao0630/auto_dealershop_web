@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoHub Bay Area - Mazda Schedule Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="landing_page.css">
+
+</head>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom blue color for the button, matched to the screenshot */
+        .submit-button {
+            background-color: #2E5A9D;
+            transition: background-color 0.2s;
+        }
+        .submit-button:hover {
+            background-color: #1f3e69;
+        }
+        /* Style for the custom pill-shaped input fields */
+        .form-input-field {
+            border: 1px solid #d1d5db; /* Default gray border */
+            height: 52px; 
+            padding-left: 1.5rem; 
+            padding-right: 1.5rem;
+            width: 100%;
+            border-radius: 9999px; /* Fully rounded pill shape */
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-input-field:focus {
+            outline: none;
+            border-color: #2E5A9D; /* Highlight color on focus */
+            box-shadow: 0 0 0 3px rgba(46, 90, 157, 0.3);
+        }
+        /* Specific override for the textarea field */
+        textarea.form-input-field {
+             height: auto; 
+             padding-top: 1rem;
+             padding-bottom: 1rem;
+             border-radius: 1.5rem; 
+        }
+    </style>
+
+<body class="bg-white text-gray-800">
+
+    <!-- App Container -->
+    <div class="max-w-7xl mx-auto">
+
+        <!-- Header -->
+        <header class="py-4 px-6 md:px-8 shadow-md">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <!-- LOGO IMAGE SOURCE: logo.png -->
+                    <img src="img\logo.png" alt="AutoHub Motors Logo" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/64x64/45a5f1/ffffff?text=LOGO';"
+                         class="h-16 w-16 rounded-full">
+                    <span class="font-bold text-3xl">AutoHub Motors</span>
+                </div>
+                <nav class="hidden md:flex items-center space-x-6 text-sm">
+                    <a href="#" class="text-gray-600 hover:text-black">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-black">New Car</a>
+                    <a href="#" class="text-gray-600 hover:text-black">Pre-owned</a>
+                    <a href="#" class="text-black font-semibold border-b-2 border-black pb-1">Services</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-full text-sm hover:bg-blue-700 transition duration-300">Contact</a>
+                    <span class="font-semibold border border-gray-300 py-2 px-4 rounded-full text-sm">878 - 555 - 808</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="py-12 px-6 md:px-8">
+            <!-- Form Container -->
+            <div class="max-w-xl mx-auto">
+                <h1 class="text-2xl font-bold mb-10 border-b pb-2">Schedule Service</h1>
+
+                <!-- IMPORTANT: Form action set to redirect to thank_you.html -->
+                <form action="thank_you.html" method="GET" class="space-y-8">
+
+                    <!-- Name Field -->
+                    <div class="space-y-2">
+                        <label for="name" class="block font-semibold text-gray-700">Name</label>
+                        <input type="text" id="name" name="name" class="form-input-field" placeholder="Full Name" required>
+                    </div>
+
+                    <!-- Email Address Field -->
+                    <div class="space-y-2">
+                        <label for="email" class="block font-semibold text-gray-700">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input-field" placeholder="Email@example.com" required>
+                    </div>
+
+                    <!-- Phone Number Field -->
+                    <div class="space-y-2">
+                        <label for="phone" class="block font-semibold text-gray-700">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-input-field" placeholder="(000) 000-0000" required>
+                    </div>
+
+                    <!-- Vehicle Information Field -->
+                    <div class="space-y-2">
+                        <label for="vehicle" class="block font-semibold text-gray-700">Vehicle Information (Year/Make/Model)</label>
+                        <input type="text" id="vehicle" name="vehicle" class="form-input-field" placeholder="e.g., 2023 Mazda CX-5" required>
+                    </div>
+
+                    <!-- Type of Service Field -->
+                    <div class="space-y-2">
+                        <label for="service_type" class="block font-semibold text-gray-700">Type of Service</label>
+                        <input type="text" id="service_type" name="service_type" class="form-input-field" placeholder="e.g., Oil Change, Brakes, Maintenance" required>
+                    </div>
+
+                    <!-- Preferred Date & Time Field -->
+                    <div class="space-y-2">
+                        <label for="date_time" class="block font-semibold text-gray-700">Preferred Date & Time</label>
+                        <input type="text" id="date_time" name="date_time" class="form-input-field" placeholder="e.g., 2025-12-15 at 10:00 AM" required>
+                    </div>
+
+                    <!-- Additional Information/Questions Field (Textarea) -->
+                    <div class="space-y-2">
+                        <label for="additional_info" class="block font-semibold text-gray-700">Additional Information or questions</label>
+                        <textarea id="additional_info" name="additional_info" rows="4" 
+                                  class="form-input-field" 
+                                  placeholder="Type any specific requests or questions you have here."></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div>
+                        <button type="submit" class="submit-button text-white font-semibold py-4 w-full rounded-full text-lg shadow-lg">
+                            Submit
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white py-12 px-6 md:px-8 border-t">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-4">
+                        <!-- LOGO IMAGE SOURCE: logo.png -->
+                        <img src="img\logo.png" alt="AutoHub Motors Logo" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/64x64/45a5f1/ffffff?text=LOGO';"
+                             class="h-16 w-16 rounded-full">
+                        <span class="font-bold text-xl">AutoHub Motors</span>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <nav class="grid grid-cols-2 gap-4 text-sm">
+                        <a href="#" class="text-gray-600 hover:text-black">Home</a>
+                        <a href="#" class="text-gray-600 hover:text-black">New Car</a>
+                        <a href="#" class="text-gray-600 hover:text-black">Pre-owned</a>
+                        <a href="#" class="text-gray-600 hover:text-black">Services</a>
+                        <a href="#" class="text-gray-600 hover:text-black">Test Drive</a>
+                        <a href="#" class="text-gray-600 hover:text-black">Contact</a>
+                    </nav>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Opening Hours</h4>
+                    <p class="text-gray-600 mt-2 text-sm">Monday-Saturday: 9am - 8pm</p>
+                    <p class="text-gray-600 text-sm">Sunday: 10am - 6pm</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                <p>&copy; 2025 AutoHub Bay Area. All Rights Reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-black"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-black"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="hover:text-black"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
