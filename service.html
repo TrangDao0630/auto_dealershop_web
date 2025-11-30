@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoHub Bay Area - Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landing_page.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': '#215ca8', // primary blue
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* This is kept to ensure consistency with the main page's custom button styling if defined in landing_page.css */
+        .btn-primary {
+            background-color: var(--brand, #215ca8);
+        }
+        .btn-primary:hover {
+            background-color: #184a86; /* a slightly darker shade */
+        }
+    </style>
+
+</head>
+<body class="bg-white text-gray-800">
+    <div>
+        <header class="py-4 border-b border-gray-200 sticky top-0 z-30 bg-white/90 backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <img src="img/logo.png" alt="AutoHub Logo" class="h-10 w-10 md:h-20 md:w-20 rounded-full">
+                    <span class="font-bold text-2xl">AutoHub Motors</span>
+                </div>
+        
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="landing_page.html" class="mt-3 text-lg text-gray-600 hover:text-brand">Home</a>
+                    <a href="new_car.html" class="mt-3 text-lg text-gray-600 hover:text-brand">New Car</a>
+                    <a href="preowned.html" class="mt-3 text-lg text-gray-600 hover:text-brand">Pre-owned</a>
+                    <a href="service.html" class="mt-3 text-lg font-semibold text-brand" aria-current="page">Services</a>
+                </nav>
+        
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="contact.html" class="btn-primary inline-flex px-5 py-2.5 rounded-full text-white font-semibold shadow-md">Contact</a>
+                    <a class="btn-primary inline-flex px-5 py-2.5 rounded-full text-white font-semibold shadow-md" href="tel:+16695551809" title="Call dealership">+1 (669) 555-1809</a>
+                </div>
+        
+                <button id="mobile-menu-button" class="lg:hidden p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="hidden lg:hidden mt-4 px-6 md:px-8">
+                <nav class="flex flex-col space-y-2">
+                    <a href="landing_page.html" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">Home</a>
+                    <a href="new_car.html" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">New Car</a>
+                    <a href="preowned.html" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">Pre-owned</a>
+                    <a href="service.html" class="btn-primary block px-4 py-3 rounded-md text-white font-medium transition-colors duration-300 ease-in-out">Services</a>
+                    <a href="contact.html" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">Contact</a>
+                    <a href="tel:+16695551809" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">+1 (669) 555-1809</a>
+                </nav>
+            </div>
+        </header>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-8 py-7 border-b border-gray-200 mb-5">
+            <div class="text-sm text-gray-500"><a href="landing_page.html" class="hover:text-gray-700">Home</a> / <span>Services</span></div>
+            <h1 class="mt-2 mb-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">Service</h1>
+            <p class="text-gray-500 max-w-2xl">Keep your vehicle running smoothly. Use the shortcuts below to schedule maintenance, book a test drive, reach our team, or request a smog check.</p>
+        </div>
+
+        <main class="max-w-7xl mx-auto px-6 md:px-8">
+            <section class="my-7 space-y-3" aria-hidden="true">
+                <div class="h-3 rounded-full bg-gray-400 opacity-55 w-full"></div>
+                <div class="h-3 rounded-full bg-gray-400 opacity-55 w-full"></div>
+                <div class="h-3 rounded-full bg-gray-400 opacity-55 w-1/2"></div>
+            </section>
+
+            <section class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto my-7 sm:my-10" aria-label="Quick actions">
+                
+                <a class="flex items-center justify-center gap-3 p-5 rounded-3xl bg-brand text-white font-extrabold text-lg sm:text-xl shadow-xl transition-all duration-100 hover:shadow-2xl hover:-translate-y-px focus:ring-4 focus:ring-blue-300" href="schedule_service.html" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 flex-shrink-0" aria-hidden="true">
+                        <path d="M9 17V7m6 10V7M4 21h16" />
+                    </svg>
+                    Schedule Service
+                </a>
+
+                <a class="flex items-center justify-center gap-3 p-5 rounded-3xl bg-brand text-white font-extrabold text-lg sm:text-xl shadow-xl transition-all duration-100 hover:shadow-2xl hover:-translate-y-px focus:ring-4 focus:ring-blue-300" href="test_drive.html" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 flex-shrink-0" aria-hidden="true">
+                        <path d="M5 16l-1-3 3-3 2-3h6l2 3 3 3-1 3H5z"/>
+                    </svg>
+                    Test Drive
+                </a>
+
+                <a class="flex items-center justify-center gap-3 p-5 rounded-3xl bg-brand text-white font-extrabold text-lg sm:text-xl shadow-xl transition-all duration-100 hover:shadow-2xl hover:-translate-y-px focus:ring-4 focus:ring-blue-300" href="contact.html" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 flex-shrink-0" aria-hidden="true">
+                        <path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Contact Form
+                </a>
+
+                <a class="flex items-center justify-center gap-3 p-5 rounded-3xl bg-brand text-white font-extrabold text-lg sm:text-xl shadow-xl transition-all duration-100 hover:shadow-2xl hover:-translate-y-px focus:ring-4 focus:ring-blue-300" href="schedule_service.html" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 flex-shrink-0" aria-hidden="true">
+                        <path d="M3 10h18M7 6h10l3 4v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8l3-4Z"/>
+                        <path d="M10 14h4"/>
+                    </svg>
+                    Smog Check
+                </a>
+            </section>
+
+            <section class="my-7 space-y-3" aria-hidden="true">
+                <div class="h-3 rounded-full bg-gray-400 opacity-55 w-full"></div>
+                <div class="h-3 rounded-full bg-gray-400 opacity-55 w-full"></div>
+                <div class="h-3 rounded-full bg-gray-400 opacity-55 w-1/2"></div>
+            </section>
+        </main>
+
+        <footer class="py-12 border-t mt-12">
+            <div class="max-w-7xl mx-auto px-6 md:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <div class="flex items-center space-x-4">
+                            <img src="img/logo.png" class="h-10 w-10 rounded-full" alt="AutoHub Logo">
+                            <span class="font-bold text-xl">AutoHub</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <nav class="grid grid-cols-2 gap-4">
+                            <a href="landing_page.html" class="text-gray-600 hover:text-black">Home</a>
+                            <a href="new_car.html" class="text-gray-600 hover:text-black">New Car</a>
+                            <a href="preowned.html" class="text-gray-600 hover:text-black">Pre-owned</a>
+                            <a href="service.html" class="text-gray-600 hover:text-black">Services</a>
+                        </nav>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">Opening Hours</h4>
+                        <p class="text-gray-600 mt-2">Monday-Saturday: 9am - 8pm</p>
+                        <p class="text-gray-600">Sunday: 10am - 6pm</p>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t flex flex-col md:flex-row justify-between items-center text-gray-500">
+                    <p>&copy; 2025 AutoHub Bay. All Rights Reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-500 hover:text-brand" aria-label="Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12Z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-pink-500" aria-label="Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.053 1.905.24 2.583.484.794.288 1.41.673 2.01 1.278.592.6 1.217.879 2.01 1.128.678.243 1.413.43 2.583.484 1.266.058 1.646.07 4.85.07s3.584-.012 4.85-.07c1.17-.053 1.905-.24 2.583-.484.794-.288 1.41-.673 2.01-1.278.592-.6 1.217-.879 2.01-1.128C21.965 4.3 22.7 3.567 22.984 2.773c.24-.678.43-1.413.484-2.583.058-1.266.07-1.646.07-4.85s-.012-3.584-.07-4.85c-.053-1.17-.24-1.905-.484-2.583-.288-.794-.673-1.41-1.278-2.01-.6-.592-1.217-.879-2.01-1.128-.678-.243-1.413.43-2.583.484C15.68.058 15.333.07 12 .07S8.317.058 7.053.112C5.788.165 4.893.36 4.11.646c-.84.303-1.577.72-2.268 1.41C1.12 2.72.704 3.457.4 4.297c-.286.783-.48 1.678-.534 2.943C-.058 8.333-.07 8.74-.07 12s.012 3.667.07 4.947c.053 1.265.248 2.16.534 2.943.303.84.72 1.577 1.41 2.268.69.69 1.428 1.116 2.268 1.41.783.286 1.678.48 2.943.534 1.28.058 1.687.07 4.947.07s3.667-.012 4.947-.07c1.265-.053 2.16-.248 2.943-.534.84-.303 1.577-.72 2.268-1.41.69-.69 1.116-1.428 1.41-2.268.286-.783.48-1.678.534-2.943.058-1.28.07-1.687.07-4.947s-.012-3.667-.07-4.947c-.053-1.265-.248-2.16-.534-2.943-.303-.84-.72-1.577-1.41-2.268C21.28.704 20.543.288 19.7.4.783.286 18.322.48 17.057.534 15.68.058 15.333.07 12 .07h-.008Zm0 6.163c3.204 0-5.777 2.573-5.777 5.777s2.573 5.777 5.777 5.777 5.777-2.573 5.777-5.777S15.204 6.163 12 6.163Zm0 9.59c-2.106 0-3.813-1.707-3.813-3.813s1.707-3.813 3.813-3.813 3.813 1.707 3.813 3.813-1.707 3.813-3.813 3.813ZM16.965 5.585c-.833 0-1.508.675-1.508 1.508s.675 1.508 1.508 1.508 1.508-.675 1.508-1.508-.675-1.508-1.508-1.508Z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-black" aria-label="X">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153ZM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.405Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="landing_page.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+
+            if (button && menu) {
+                button.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
