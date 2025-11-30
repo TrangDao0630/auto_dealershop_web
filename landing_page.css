@@ -7,13 +7,11 @@
   .btn-primary {
     @apply inline-flex px-5 py-2.5 rounded-full text-white font-semibold transition-all duration-300 ease-in-out;
     
-    /* Your custom color */
     background-color: #2E56A0;
     
-    /* Custom hover color (a slightly darker shade) */
     &:hover {
       background-color: #254580;
-      box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1); /* Adding a subtle shadow on hover */
+      box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1); 
     }
   }
 }
