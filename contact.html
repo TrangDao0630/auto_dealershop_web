@@ -1,302 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AutoHub — Contact Form</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg: #0f0f10;
-      --panel: #111214;
-      --ink: #e9e9ea;
-      --ink-dim: #b6b8be;
-      --accent: #66b2ff;
-      --button: #121317;
-      --button-ink: #f2f2f2;
-      --pill: #15171b;
-      --border: #22242a;
-      --input-bg: #0d0e10;
-      --input-border: #1f2127;
-      --input-focus: #2a74ff;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoHub Bay Area - Contact Us</title>
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    body{
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.45;
-    }
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    /* Top bar */
-    .topbar{
-      width: 100%;
-      background: #0d0e10;
-      border-bottom: 1px solid var(--border);
-    }
-    .topbar__inner{
-      max-width: 1128px;
-      margin: 0 auto;
-      padding: 18px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    <link rel="stylesheet" href="landing_page.css">
 
-    .brand{
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .brand img{
-      width: 52px;
-      height: 52px;
-      object-fit: contain;
-      border-radius: 6px;
-      background: transparent;
-    }
-    .brand__text{
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .brand__title{
-      font-weight: 700;
-      letter-spacing: .2px;
-    }
-    .brand__subtitle{
-      color: var(--ink-dim);
-      font-size: 12px;
-      letter-spacing: .25px;
-    }
-
-    nav{
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .nav__link{
-      color: var(--ink);
-      text-decoration: none;
-      padding: 8px 10px;
-      border-radius: 8px;
-      font-weight: 500;
-    }
-    .nav__link:hover{ background: #121317; }
-
-    .nav__pill{
-      background: var(--pill);
-      color: var(--ink);
-      padding: 8px 12px;
-      border-radius: 14px;
-      font-size: 13px;
-      border: 1px solid var(--border);
-    }
-    .nav__phone{
-      color: var(--ink);
-      font-weight: 600;
-      margin-left: 10px;
-      white-space: nowrap;
-    }
-
-    /* Page container */
-    .page{
-      max-width: 1128px;
-      margin: 0 auto;
-      padding: 28px 22px 80px;
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-
-    /* Main content card */
-    .card{
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 28px;
-    }
-
-    .heading{
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 8px;
-    }
-
-    .logo-round{
-      width: 70px;
-      height: 70px;
-      object-fit: contain;
-      border-radius: 50%;
-      background: transparent;
-    }
-
-    h1{
-      margin: 0;
-      font-size: 32px;
-      letter-spacing: .2px;
-    }
-
-    .note{
-      color: var(--ink-dim);
-      font-size: 14px;
-      margin-top: 8px;
-      margin-bottom: 26px;
-      max-width: 680px;
-    }
-
-    .section-title{
-      font-weight: 600;
-      margin-bottom: 14px;
-      font-size: 16px;
-      letter-spacing: .2px;
-    }
-
-    /* Form */
-    .form{
-      display: grid;
-      gap: 14px;
-      max-width: 720px;
-    }
-
-    .grid-2{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    label{
-      display: block;
-      font-size: 13px;
-      color: var(--ink-dim);
-      margin-bottom: 6px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea{
-      width: 100%;
-      background: var(--input-bg);
-      color: var(--ink);
-      border: 1px solid var(--input-border);
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-size: 14px;
-      outline: none;
-      transition: border-color .15s, box-shadow .15s;
-    }
-
-    input::placeholder, textarea::placeholder{
-      color: #999fab;
-    }
-
-    input:focus, textarea:focus{
-      border-color: var(--input-focus);
-      box-shadow: 0 0 0 3px rgba(42,116,255,.15);
-    }
-
-    textarea{
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .actions{
-      margin-top: 10px;
-    }
-
-    .btn{
-      background: var(--button);
-      color: var(--button-ink);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 26px;
-      font-weight: 600;
-      letter-spacing: .2px;
-      cursor: pointer;
-      transition: transform .04s ease, background .18s ease, border-color .18s ease;
-    }
-    .btn:hover{ background: #171921; border-color:#2b2e36; }
-    .btn:active{ transform: translateY(1px); }
-
-    /* Responsive */
-    @media (max-width: 860px){
-      .grid-2{ grid-template-columns: 1fr; }
-      .nav__phone{ display:none; }
-    }
-  </style>
+    <style>
+      body {
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      }
+    </style>
 </head>
-<body>
+<body class="bg-white text-gray-800">
 
-  <!-- Top Navigation -->
-  <header class="topbar">
-    <div class="topbar__inner">
-      <div class="brand">
-        <img src="images/logo.png" alt="AutoHub logo" />
-        <div class="brand__text">
-          <span class="brand__title">AutoHub</span>
-          <span class="brand__subtitle">AutoHub Motors</span>
-        </div>
-      </div>
+    <div>
+        <!-- HEADER -->
+        <header class="py-4 border-b border-gray-200">
+            <div class="px-6 md:px-8 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <img src="img/logo.png" alt="AutoHub Logo" class="h-20 w-20 rounded-full">
+                    <span class="font-bold text-2xl">AutoHub Motors</span>
+                </div>
 
-      <nav>
-        <a class="nav__link" href="#">Home</a>
-        <a class="nav__link" href="#">New Car</a>
-        <a class="nav__link" href="#">Pre-owned</a>
-        <a class="nav__link" href="#">Services</a>
-        <span class="nav__pill">Questions?</span>
-        <span class="nav__phone">+408-880-8888</span>
-      </nav>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="landing_page.html" class="mt-3 text-lg text-gray-600">Home</a>
+                    <a href="new_car.html" class="mt-3 text-lg text-gray-600">New Car</a>
+                    <a href="preowned.html" class="mt-3 text-lg text-gray-600">Pre-owned</a>
+                    <a href="service.html" class="mt-3 text-lg text-gray-600">Services</a>
+                </nav>
+
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="contact.html" class="btn-primary inline-flex px-5 py-2.5 rounded-full text-white font-semibold transition-colors duration-300 ease-in-out">Contact</a>
+                    <a class="btn-primary inline-flex px-5 py-2.5 rounded-full text-white font-semibold transition-colors duration-300 ease-in-out">+669-555-1809</a>
+                </div>
+
+                <!-- Simple mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-gray-400" aria-controls="mobile-menu" aria-expanded="false">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="hidden md:hidden mt-4 px-6 md:px-8">
+                <nav class="flex flex-col space-y-2">
+                    <a href="landing_page.html" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">Home</a>
+                    <a href="new_car.html" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">New Car</a>
+                    <a href="preowned.html" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">Pre-owned</a>
+                    <a href="service.html" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">Services</a>
+                    <a href="contact.html" class="block px-4 py-3 rounded-md hover:bg-gray-100 text-gray-700 font-medium transition-colors duration-300 ease-in-out">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- MAIN -->
+        <main>
+            <section class="py-16">
+                <div class="px-6 md:px-8 max-w-4xl mx-auto">
+
+                    <!-- Page title and note -->
+                    <h1 class="text-4xl font-extrabold">Contact Form</h1>
+                    <p class="mt-3 text-sm text-gray-600 italic max-w-2xl">
+                        *Please note that response times may take 1 to 2 business days. By submitting this form, you agree to our terms and conditions.*
+                    </p>
+
+                    <!-- Section title -->
+                    <h2 class="mt-10 text-xl font-semibold">Contact Us</h2>
+
+                    <!-- Form -->
+                    <form class="mt-6 space-y-5" action="#" method="post"
+                          onsubmit="event.preventDefault(); alert('Thank you. Your message has been submitted.');">
+
+                        <!-- First and last name -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-gray-700">First name</label>
+                                <input
+                                    id="firstName"
+                                    name="firstName"
+                                    type="text"
+                                    required
+                                    class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+                                    placeholder="Jane"
+                                >
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-gray-700">Last name</label>
+                                <input
+                                    id="lastName"
+                                    name="lastName"
+                                    type="text"
+                                    required
+                                    class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+                                    placeholder="Smitherton"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                required
+                                class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+                                placeholder="email@janesfakedomain.net"
+                            >
+                        </div>
+
+                        <!-- Message + Submit aligned to right -->
+                        <div class="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto] gap-4 items-start">
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">Your message</label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="5"
+                                    required
+                                    class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+                                    placeholder="Enter your question or message"
+                                ></textarea>
+                            </div>
+
+                            <div class="flex md:self-end mt-2 md:mt-0">
+                                <a href="#" class="btn-primary inline-flex px-5 py-2.5 rounded-full text-white font-semibold transition-colors duration-300 ease-in-out">Submit</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="py-12 border-t">
+            <div class="px-6 md:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <div class="flex items-center space-x-4">
+                            <img src="img/logo.png" class="h-20 w-20 rounded-full" alt="AutoHub logo">
+                            <span class="font-bold text-xl">AutoHub</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <nav class="grid grid-cols-2 gap-4">
+                            <a href="landing_page.html" class="text-gray-600 hover:text-black">Home</a>
+                            <a href="new_car.html" class="text-gray-600 hover:text-black">New Car</a>
+                            <a href="preowned.html" class="text-gray-600 hover:text-black">Pre-owned</a>
+                            <a href="services.html" class="text-gray-600 hover:text-black">Services</a>
+                            <a href="contact.html" class="text-gray-600 hover:text-black">Contact</a>
+                        </nav>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">Opening Hours</h4>
+                        <p class="text-gray-600 mt-2">Monday to Saturday: 9am to 8pm</p>
+                        <p class="text-gray-600">Sunday: 10am to 6pm</p>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t flex flex-col md:flex-row justify-between items-center text-gray-500">
+                    <p>&copy; 2025 AutoHub Bay. All Rights Reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-500 hover:text-blue-600" aria-label="Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12Z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-pink-500" aria-label="Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm5.25-.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-black" aria-label="X">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153ZM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.405Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
-  </header>
 
-  <!-- Page -->
-  <main class="page">
-    <section class="card">
-      <div class="heading">
-        <img class="logo-round" src="images/logo.png" alt="AutoHub logo" />
-        <h1>Contact Form</h1>
-      </div>
-
-      <p class="note">
-        *Please note that response times may take 1–2 business days.
-        By submitting this form, you agree to our terms and conditions.*
-      </p>
-
-      <div class="section-title">Contact Us</div>
-
-      <form class="form" action="#" method="post" onsubmit="event.preventDefault(); alert('Submitted!');">
-        <div class="grid-2">
-          <div>
-            <label for="firstName">First name</label>
-            <input id="firstName" type="text" name="firstName" placeholder="Jane" required>
-          </div>
-          <div>
-            <label for="lastName">Last name</label>
-            <input id="lastName" type="text" name="lastName" placeholder="Smitherton" required>
-          </div>
-        </div>
-
-        <div>
-          <label for="email">Email address</label>
-          <input id="email" type="email" name="email" placeholder="email@janesfakedomain.net" required>
-        </div>
-
-        <div>
-          <label for="message">Your message</label>
-          <textarea id="message" name="message" placeholder="Enter your question or message"></textarea>
-        </div>
-
-        <div class="actions">
-          <button type="submit" class="btn">Submit</button>
-        </div>
-      </form>
-    </section>
-  </main>
-
+    <!-- Toggle mobile nav -->
+    <script>
+      const btn = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+        });
+      }
+    </script>
 </body>
 </html>
+
