@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoHub Bay Area - Book a Test Drive</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom blue color for the button */
+        .submit-button, .blue-button {
+            background-color: #2E5A9D;
+            transition: background-color 0.2s;
+        }
+        .submit-button:hover, .blue-button:hover {
+            background-color: #1f3e69;
+        }
+        /* Style for the custom pill-shaped select/input fields */
+        .form-input-pill {
+            border: 1px solid #d1d5db;
+            height: 48px; 
+            padding-left: 1.5rem; 
+            padding-right: 1.5rem;
+            width: 100%;
+            border-radius: 9999px; /* Fully rounded pill shape */
+            transition: border-color 0.2s;
+        }
+        .form-input-pill:focus {
+            outline: none;
+            border-color: #2E5A9D;
+            box-shadow: 0 0 0 3px rgba(46, 90, 157, 0.2);
+        }
+        /* Style specifically for the Message textarea (less rounded) */
+        textarea.form-input-pill {
+             height: 120px; 
+             padding-top: 1rem;
+             padding-bottom: 1rem;
+             border-radius: 1.5rem; 
+        }
+
+        /* Custom styling for select fields to maintain pill shape */
+        .form-select-pill {
+            appearance: none; /* Hide default arrow */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.5em 1.5em;
+        }
+
+        /* Style for the Schedule/Hours card on the right */
+        .hours-card {
+            border: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- App Container -->
+    <div class="max-w-7xl mx-auto">
+
+        <!-- Header -->
+        <header class="py-4 px-6 md:px-8 shadow-md relative bg-white z-50">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <img src="img\logo.png" alt="AutoHub Motors Logo" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/64x64/45a5f1/ffffff?text=LOGO';"
+                        class="h-16 w-16 rounded-full">
+                    <span class="font-bold text-3xl">AutoHub Motors</span>
+                </div>
+
+                <nav class="hidden md:flex items-center space-x-6 text-sm">
+                    <a href="landing_page.html" class="text-gray-600 hover:text-black">Home</a>
+                    <a href="new_car.html" class="text-gray-600 hover:text-black">New Car</a>
+                    <a href="preowned_car.html" class="text-gray-600 hover:text-black">Pre-owned</a>
+                    <a href="service.html" class="text-black font-semibold border-b-2 border-black pb-1">Services</a>
+                </nav>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="contact.html" class="bg-[#3056a0] text-white font-semibold py-2 px-4 rounded-full text-sm hover:bg-[#264480] transition duration-300">Contact</a>
+                    <a href="tel:+16695551809" class="bg-[#3056a0] text-white font-semibold py-2 px-4 rounded-full text-sm hover:bg-[#264480] transition duration-300">+1 (669) 555-1809</a>               
+                </div>
+                
+                <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-button" class="text-gray-600 hover:text-black focus:outline-none p-2 border rounded-md">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 py-6 px-4 flex flex-col space-y-2 z-50">
+                    
+                    <a href="landing_page.html" class="text-gray-700 hover:text-[#3056a0] hover:bg-gray-50 font-bold block px-4 py-3 rounded-lg transition-colors">
+                        Home
+                    </a>
+                    <a href="new_car.html" class="text-gray-700 hover:text-[#3056a0] hover:bg-gray-50 font-bold block px-4 py-3 rounded-lg transition-colors">
+                        New Car
+                    </a>
+                    <a href="preowned_car.html" class="text-gray-700 hover:text-[#3056a0] hover:bg-gray-50 font-bold block px-4 py-3 rounded-lg transition-colors">
+                        Pre-owned
+                    </a>
+                    
+                    <a href="service.html" class="bg-[#3056a0] text-white font-bold block px-4 py-3 rounded-lg transition-colors">
+                        Services
+                    </a>
+
+                    <div class="mt-8 px-4 border-t pt-6">
+                        <a href="contact.html" class="block w-full text-center bg-gray-100 text-[#3056a0] font-bold py-3 rounded-lg mb-3 hover:bg-gray-200">Contact</a>
+                        <a href="tel:+16695551809" class="text-gray-600 font-bold text-lg hover:text-[#3056a0] transition-colors">+1 (669) 555-1809</a>
+                    </div>
+                </div>
+        </header>   
+
+
+        <main class="py-12 px-6 md:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+                <!-- Left Column: Form and Vehicle Info (2/3 width on large screens) -->
+                <div class="lg:col-span-2">
+                    <h1 class="text-3xl font-bold mb-4">Book a Test Drive</h1>
+                    <p class="text-gray-600 mb-8 max-w-lg">Experience the thrill before you purchase. Schedule a test drive with a preferred vehicle.</p>
+
+                    <!-- Vehicle Selection Section -->
+                    <div class="mb-10 p-6 border rounded-xl shadow-sm bg-gray-50">
+                        <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+
+                            <!-- Vehicle Image Slot (mazdacx30.png corrected) -->
+                            <div class="w-full md:w-1/2 p-2 border border-gray-300 rounded-lg bg-white overflow-hidden">
+                                <!-- IMAGE: mazdacx30.png (Corrected) -->
+                                <img src="img\cx30.jpg" alt="Selected Mazda CX-30" 
+                                     onerror="this.onerror=null; this.src='https://placehold.co/300x200/4f46e5/ffffff?text=Vehicle+Image';"
+                                     class="w-full h-auto object-cover rounded">
+                            </div>
+
+                            <!-- Vehicle Selection Dropdowns -->
+                            <div class="w-full md:w-1/2 space-y-4">
+                                <p class="font-semibold text-sm text-gray-700">Select Vehicle Model</p>
+                                <select class="form-input-pill form-select-pill bg-white">
+                                    <option>Choose a year</option>
+                                    <option>2024</option>
+                                    <option>2023</option>
+                                    <option>2022</option>
+                                </select>
+                                <select class="form-input-pill form-select-pill bg-white">
+                                    <option>Choose a model</option>
+                                    <option>Mazda CX-5</option>
+                                    <option>Mazda CX-30</option>
+                                    <option>Mazda 3 Hatchback</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Test Drive Form -->
+                    <!-- IMPORTANT: Form action set to redirect to thank_you.html -->
+                    <form action="thank_you.html" method="GET" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- First Name -->
+                            <div>
+                                <label for="first_name" class="block font-semibold text-sm text-gray-700 mb-1">First Name*</label>
+                                <input type="text" id="first_name" name="first_name" class="form-input-pill" required>
+                            </div>
+                            <!-- Last Name -->
+                            <div>
+                                <label for="last_name" class="block font-semibold text-sm text-gray-700 mb-1">Last Name*</label>
+                                <input type="text" id="last_name" name="last_name" class="form-input-pill" required>
+                            </div>
+                            <!-- Email -->
+                            <div>
+                                <label for="email" class="block font-semibold text-sm text-gray-700 mb-1">Email*</label>
+                                <input type="email" id="email" name="email" class="form-input-pill" required>
+                            </div>
+                            <!-- Phone Number -->
+                            <div>
+                                <label for="phone" class="block font-semibold text-sm text-gray-700 mb-1">Phone Number*</label>
+                                <input type="tel" id="phone" name="phone" class="form-input-pill" required>
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div>
+                            <label for="message" class="block font-semibold text-sm text-gray-700 mb-1">Message</label>
+                            <textarea id="message" name="message" class="form-input-pill" placeholder="Any additional details or questions..."></textarea>
+                        </div>
+
+                        <!-- Preferred Day and Time Dropdowns -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                            <div>
+                                <label for="preferred_day" class="block font-semibold text-sm text-gray-700 mb-1">What day would you like to schedule a test drive?</label>
+                                <input type="date" id="preferred_day" name="preferred_day" class="form-input-pill" required>
+                            </div>
+                            <div>
+                                <label for="preferred_time" class="block font-semibold text-sm text-gray-700 mb-1">What time would you like to schedule your test drive?</label>
+                                <select id="preferred_time" name="preferred_time" class="form-input-pill form-select-pill bg-white" required>
+                                    <option>Morning (9:00 AM - 12:00 PM)</option>
+                                    <option>Afternoon (1:00 PM - 5:00 PM)</option>
+                                    <option>Evening (5:00 PM - 7:00 PM)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Legal Checkbox -->
+                        <div class="flex items-start pt-4">
+                            <input type="checkbox" id="consent" name="consent" class="mt-1 mr-3 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" required>
+                            <label for="consent" class="text-xs text-gray-500">
+                                By checking this box, I agree that AutoHub Motors, and their partners may contact me by call or text using automated technology. Consent is not required to purchase. Carrier charges may apply.
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-4">
+                            <button type="submit" class="submit-button text-white font-semibold py-3 px-8 rounded-lg text-lg shadow-md">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Column: Dealership Hours (1/3 width on large screens) -->
+                <div class="lg:col-span-1">
+                    <div class="hours-card p-6 rounded-xl shadow-sm sticky top-4">
+                        <div class="flex justify-between items-center mb-4 border-b pb-2">
+                            <h3 class="font-bold text-gray-800">Sales Hours</h3>
+                            <select class="text-sm border rounded-full px-2 py-1">
+                                <option>Sales Hours</option>
+                                <option>Service Hours</option>
+                            </select>
+                        </div>
+                        <ul class="text-sm space-y-2">
+                            <li class="flex justify-between"><span>Monday</span><span class="font-semibold">8:00 AM - 7:00 PM</span></li>
+                            <li class="flex justify-between"><span>Tuesday</span><span class="font-semibold">9:00 AM - 7:00 PM</span></li>
+                            <li class="flex justify-between"><span>Wednesday</span><span class="font-semibold">8:00 AM - 7:00 PM</span></li>
+                            <li class="flex justify-between"><span>Thursday</span><span class="font-semibold">9:00 AM - 7:00 PM</span></li>
+                            <li class="flex justify-between"><span>Friday</span><span class="font-semibold">8:00 AM - 7:00 PM</span></li>
+                            <li class="flex justify-between"><span>Saturday</span><span class="font-semibold">9:00 AM - 6:00 PM</span></li>
+                            <li class="flex justify-between"><span>Sunday</span><span class="font-semibold">10:00 AM - 6:00 PM</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white py-12 px-6 md:px-8 border-t w-full">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <div class="flex items-center space-x-4">
+                            <!-- LOGO IMAGE SOURCE: logo.png (Corrected) -->
+                            <img src="img\logo.png" alt="AutoHub Motors Logo" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/64x64/45a5f1/ffffff?text=LOGO';"
+                                 class="h-16 w-16 rounded-full">
+                            <span class="font-bold text-xl">AutoHub Motors</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <nav class="grid grid-cols-2 gap-4 text-sm">
+                            <a href="landing_page.html" class="text-gray-600 hover:text-black">Home</a>
+                            <a href="new_car.html" class="text-gray-600 hover:text-black">New Car</a>
+                            <a href="preowned_car.html" class="text-gray-600 hover:text-black">Pre-owned</a>
+                            <a href="service.html" class="text-gray-600 hover:text-black">Services</a>
+                            <a href="contact.html" class="text-gray-600 hover:text-black">Contact</a>
+                        </nav>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">Opening Hours</h4>
+                        <p class="text-gray-600 mt-2 text-sm">Monday-Saturday: 9am - 8pm</p>
+                        <p class="text-gray-600 text-sm">Sunday: 10am - 6pm</p>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                    <p>&copy; 2025 AutoHub Bay Area. All Rights Reserved.</p>
+                    <div class="flex space-x-4 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-black"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-black"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="hover:text-black"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
