@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AutoHub • New Car</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-0:#ffffff; --bg-1:#f9fafb; --bg-2:#f1f3f6; --panel:#ffffff; --card:#ffffff;
+  --muted:#6b7280; --text:#111827; --brand:#00b0ff; --accent:#3a91ff; --ring:rgba(0,176,255,.35);
+  --border:#e5e7eb; --success:#39d98a;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+  background:var(--bg-0); color:var(--text); letter-spacing:.2px;
+}
+.container{width:min(1200px,92vw); margin-inline:auto}
+
+/* Top bar */
+.topbar{background:var(--bg-1); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:30}
+.topbar-inner{display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:16px; padding:12px 0}
+
+.brand{display:grid; grid-template-columns:50px auto; align-items:center; gap:12px}
+.brand img{width:50px; height:50px; border-radius:50%; border:1px solid var(--border); object-fit:cover}
+.brand h1{font-size:14px; margin:0; color:#111827; font-weight:700; letter-spacing:.5px}
+
+nav ul{display:flex; gap:18px; list-style:none; padding:0; margin:0; justify-content:center}
+nav a{color:#374151; text-decoration:none; font-size:13px; font-weight:600; padding:8px 10px; border-radius:10px}
+nav a:hover{background:#e5e7eb; color:#111827}
+
+.badges{display:flex; gap:8px; align-items:center}
+.chip{font-size:11px; font-weight:700; border:1px solid var(--border); color:#111827; background:#f3f4f6; padding:6px 10px; border-radius:999px}
+.chip--primary{background:#dbeafe; border-color:#bfdbfe; color:#1e3a8a}
+.phone{margin-left:6px; color:#111827; font-weight:700; font-size:12px; letter-spacing:.5px}
+
+/* Hero */
+.hero{margin:18px auto 24px; border-radius:16px; overflow:hidden; border:1px solid var(--border); background:#ffffff}
+.hero img{width:100%; height:220px; object-fit:cover; display:block}
+
+/* Section header */
+.section-head{display:grid; grid-template-columns:1fr auto; align-items:center; gap:12px; margin:10px 0 12px}
+.section-head h2{margin:0; font-size:18px; letter-spacing:.6px}
+.searchbar{display:grid; grid-template-columns:20px 1fr 20px; align-items:center; gap:10px; background:#f9fafb; border:1px solid var(--border); border-radius:999px; padding:10px 14px; width:340px}
+.searchbar input{background:transparent; border:0; outline:none; color:#111827; font-size:13px}
+.results-note{color:var(--muted); font-size:12px}
+
+/* Layout */
+.layout{display:grid; grid-template-columns:260px 1fr; gap:18px; align-items:start}
+
+/* Filters sidebar */
+.sidebar{background:#ffffff; border:1px solid var(--border); border-radius:14px; padding:14px; position:sticky; top:74px}
+.filter-title{font-size:12px; color:#374151; margin:12px 0 6px; font-weight:800; letter-spacing:.6px; text-transform:uppercase}
+.filter-group{display:grid; gap:8px; margin-bottom:12px}
+
+/* Filter button + caret */
+.filter-toggle{display:flex; align-items:center; justify-content:space-between; gap:8px; font-size:12px; background:#f9fafb; border:1px solid var(--border); color:#111827; padding:8px 10px; border-radius:10px; cursor:pointer}
+.filter-toggle:hover{border-color:#3b82f6; background:#eff6ff}
+.filter-toggle .caret{transition:transform .2s ease}
+.filter.open .filter-toggle .caret{transform:rotate(180deg)}
+.tag{font-size:10px; background:#e0f2fe; padding:4px 6px; border-radius:999px; border:1px solid #bae6fd; color:#0369a1}
+
+/* Dropdown */
+.dropdown{display:none}
+.filter.open .dropdown{display:block}
+.menu{margin-top:8px; background:#fff; border:1px solid var(--border); border-radius:10px; box-shadow:0 10px 22px rgba(0,0,0,.08); padding:10px; max-height:0; opacity:.0; transition:max-height .25s ease, opacity .2s ease}
+.filter.open .menu{max-height:360px; opacity:1}
+.menu .row{display:flex; align-items:center; gap:10px; padding:6px 4px; font-size:12px}
+.menu .row:hover{background:#f3f4f6; border-radius:8px}
+.menu .row input{accent-color:var(--brand)}
+.menu-actions{display:flex; justify-content:space-between; gap:10px; margin-top:8px}
+.btn{display:inline-flex; align-items:center; gap:8px; border:1px solid #3b82f6; background:#2563eb; color:#fff; padding:8px 12px; border-radius:10px; font-weight:700; font-size:12px; text-decoration:none; cursor:pointer}
+.btn.secondary{background:#e5e7eb; border-color:#d1d5db; color:#111827}
+
+/* Cards */
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.card{background:#ffffff; border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:0 6px 16px rgba(0,0,0,.05); transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
+.card:hover{transform:translateY(-2px); border-color:#3b82f6; box-shadow:0 12px 24px rgba(0,0,0,.1)}
+.card img{width:100%; height:160px; object-fit:cover; display:block}
+.card-body{padding:12px}
+.title{font-size:13px; font-weight:800; margin:2px 0 6px; color:#111827}
+.subtitle{font-size:11px; color:#6b7280}
+
+/* CTA band */
+.cta-band{margin:26px 0 0; background:#f9fafb; border:1px solid var(--border); border-radius:16px; padding:18px; display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:14px}
+
+/* Footer */
+.footer-top{background:#f9fafb; border:1px solid var(--border); border-radius:16px; padding:18px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; align-items:start; margin:16px 0 24px}
+.mini-brand{display:grid; grid-template-columns:44px 1fr; gap:12px; align-items:center}
+.mini-logo img{width:44px; height:44px; border-radius:50%; border:1px solid var(--border); object-fit:cover}
+.foot h4{margin:0 0 10px; font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#111827}
+.foot p{margin:4px 0; font-size:12px; color:#374151}
+
+/* Responsive */
+@media (max-width:1024px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .cta-band{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .searchbar{width:100%}
+}
+@media (max-width:560px){
+  nav ul{gap:10px}
+  .hero img{height:160px}
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+  <!-- Topbar / Nav -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <!-- Replace src with your file path; place your image as autohub-logo.png next to this HTML -->
+        <img src="img/logo.png" alt="AutoHub Motors Logo" />
+        <h1>AutoHub</h1>
+      </div>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">New Car</a></li>
+          <li><a href="#">Pre-owned</a></li>
+          <li><a href="#">Services</a></li>
+        </ul>
+      </nav>
+
+      <div class="badges">
+        <span class="phone">+1 (408) 880-8888</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="container hero">
+    <img alt="Mazda grille" src="img/mazdalogo.png" />
+  </div>
+
+  <main class="container">
+    <!-- Section Header -->
+    <div class="section-head">
+      <h2>New Car</h2>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <label class="searchbar" aria-label="Search cars">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#9fb0c9" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.4-3.4"/></svg>
+          <input type="search" placeholder="Search" />
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#9fb0c9" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg>
+        </label>
+        <div class="results-note">Results 1–9 of 24</div>
+      </div>
+    </div>
+
+    <div class="layout">
+      <!-- Sidebar Filters -->
+      <aside class="sidebar">
+        <div class="filter-title">Filters</div>
+
+        <!-- Filter group with working dropdowns -->
+        <div class="filter-group">
+          <!-- Price Range -->
+          <div class="filter" data-filter="price">
+            <button class="filter-toggle" type="button">
+              <span>Price Range</span>
+              <span class="right" style="display:flex; align-items:center; gap:8px;">
+                <span class="tag" data-summary>$20k–$40k</span>
+                <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div class="dropdown">
+              <div class="menu">
+                <div class="row"><input type="radio" name="price" value="0-20000" id="p1"><label for="p1">$0 – $20,000</label></div>
+                <div class="row"><input type="radio" name="price" value="20000-40000" id="p2" checked><label for="p2">$20,000 – $40,000</label></div>
+                <div class="row"><input type="radio" name="price" value="40000-60000" id="p3"><label for="p3">$40,000 – $60,000</label></div>
+                <div class="row"><input type="radio" name="price" value="60000+" id="p4"><label for="p4">$60,000+</label></div>
+                <div class="menu-actions">
+                  <button class="btn secondary" data-clear>Clear</button>
+                  <button class="btn" data-apply>Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certification -->
+          <div class="filter" data-filter="cert">
+            <button class="filter-toggle" type="button">
+              <span>Certification</span>
+              <span class="right" style="display:flex; align-items:center; gap:8px;">
+                <span class="tag" data-summary>Certified</span>
+                <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div class="dropdown">
+              <div class="menu">
+                <div class="row"><input type="checkbox" id="c1" checked><label for="c1">Certified</label></div>
+                <div class="row"><input type="checkbox" id="c2"><label for="c2">Non-certified</label></div>
+                <div class="menu-actions">
+                  <button class="btn secondary" data-clear>Clear</button>
+                  <button class="btn" data-apply>Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Drivetrain -->
+          <div class="filter" data-filter="drive">
+            <button class="filter-toggle" type="button">
+              <span>Drivetrain</span>
+              <span class="right" style="display:flex; align-items:center; gap:8px;">
+                <span class="tag" data-summary>AWD</span>
+                <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div class="dropdown">
+              <div class="menu">
+                <div class="row"><input type="radio" name="drive" id="d1" value="awd" checked><label for="d1">AWD</label></div>
+                <div class="row"><input type="radio" name="drive" id="d2" value="fwd"><label for="d2">FWD</label></div>
+                <div class="row"><input type="radio" name="drive" id="d3" value="rwd"><label for="d3">RWD</label></div>
+                <div class="menu-actions">
+                  <button class="btn secondary" data-clear>Clear</button>
+                  <button class="btn" data-apply>Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Body Style -->
+          <div class="filter" data-filter="body">
+            <button class="filter-toggle" type="button">
+              <span>Body Style</span>
+              <span class="right" style="display:flex; align-items:center; gap:8px;">
+                <span class="tag" data-summary>SUV</span>
+                <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div class="dropdown">
+              <div class="menu">
+                <div class="row"><input type="checkbox" id="b1" checked><label for="b1">SUV</label></div>
+                <div class="row"><input type="checkbox" id="b2"><label for="b2">Sedan</label></div>
+                <div class="row"><input type="checkbox" id="b3"><label for="b3">Hatchback</label></div>
+                <div class="menu-actions">
+                  <button class="btn secondary" data-clear>Clear</button>
+                  <button class="btn" data-apply>Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fuel Type -->
+          <div class="filter" data-filter="fuel">
+            <button class="filter-toggle" type="button">
+              <span>Fuel Type</span>
+              <span class="right" style="display:flex; align-items:center; gap:8px;">
+                <span class="tag" data-summary>Gas</span>
+                <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div class="dropdown">
+              <div class="menu">
+                <div class="row"><input type="radio" name="fuel" id="f1" value="gas" checked><label for="f1">Gas</label></div>
+                <div class="row"><input type="radio" name="fuel" id="f2" value="hybrid"><label for="f2">Hybrid</label></div>
+                <div class="row"><input type="radio" name="fuel" id="f3" value="ev"><label for="f3">Electric</label></div>
+                <div class="menu-actions">
+                  <button class="btn secondary" data-clear>Clear</button>
+                  <button class="btn" data-apply>Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-title">Sort</div>
+        <div class="filter-group">
+          <button class="filter-toggle" type="button">Featured</button>
+          <button class="filter-toggle" type="button">Price: Low to High</button>
+          <button class="filter-toggle" type="button">Price: High to Low</button>
+          <button class="filter-toggle" type="button">Mileage</button>
+          <button class="filter-toggle" type="button">Year</button>
+        </div>
+      </aside>
+
+      <!-- Grid of vehicles -->
+      <section class="grid" aria-label="Vehicle results">
+        <article class="card">
+          <img alt="Mazda CX-5" src="img/mazdacx5.png" />
+          <div class="card-body">
+            <div class="title">Mazda CX-5</div>
+            <div class="subtitle">Perfect mix of style and performance</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img alt="Mazda 3 rear" src="img/mazda3.jpg" />
+          <div class="card-body">
+            <div class="title">Mazda 3</div>
+            <div class="subtitle">Sleek design with sporty handling</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img alt="Mazda CX-30" src="img/mazdacx30(1).png" />
+          <div class="card-body">
+            <div class="title">Mazda CX-30</div>
+            <div class="subtitle">Compact crossover for urban adventure</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img alt="Mazda CX-5 red" src="img/mazdacx5.png" />
+          <div class="card-body">
+            <div class="title">Mazda CX-5</div>
+            <div class="subtitle">Perfect mix of style and performance</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img alt="Mazda 3 side" src="img/mazda3.jpg" />
+          <div class="card-body">
+            <div class="title">Mazda 3</div>
+            <div class="subtitle">Sleek design with sporty handling</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img alt="Mazda CX-30 dusk" src="img/mazdacx30(1).png" />
+          <div class="card-body">
+            <div class="title">Mazda CX-30</div>
+            <div class="subtitle">Compact crossover for urban adventure</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img alt="Mazda CX-5 grey" src="img/mazdacx5.png" />
+          <div class="card-body">
+            <div class="title">Mazda CX-5</div>
+            <div class="subtitle">Perfect mix of style and performance</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img alt="Mazda 3 rear silver" src="img/mazda3.jpg" />
+          <div class="card-body">
+            <div class="title">Mazda 3</div>
+            <div class="subtitle">Sleek design with sporty handling</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img alt="Mazda CX-30 rear" src="img/mazdacx30(1).png" />
+          <div class="card-body">
+            <div class="title">Mazda CX-30</div>
+            <div class="subtitle">Compact crossover for urban adventure</div>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <!-- CTA band -->
+    <section class="cta-band">
+      <h3>Why Hesitate?</h3>
+      <a class="btn" href="#">Schedule Test Drive</a>
+      <a class="btn secondary" href="#">Schedule Service</a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="container">
+    <div class="footer-top">
+      <div class="foot">
+        <div class="mini-brand">
+          <div class="mini-logo">
+            <img src="img/logo.png" alt="AutoHub Motors Logo" />
+          </div>
+          <div>
+            <strong>AutoHub</strong><br/>
+            <small>Drive the difference</small>
+          </div>
+        </div>
+      </div>
+      <div class="foot">
+        <h4>Opening Hours</h4>
+        <p>Monday – Sunday: 9:00 AM – 7:00 PM</p>
+      </div>
+      <div class="foot">
+        <h4>Address</h4>
+        <p>3000 Silver Creek, San Jose, CA 95131</p>
+        <p>Phone: +1 (408) 840-3888</p>
+        <p>Email: hello@autohub.example</p>
+      </div>
+    </div>
+  </footer>
+
+<script>
+/* Dropdown behavior: toggle open/close, update summary tags, esc + click-outside */
+(function(){
+  const filters = document.querySelectorAll('.filter');
+  const closeAll = () => filters.forEach(f => f.classList.remove('open'));
+
+  // Toggle
+  document.addEventListener('click', (e) => {
+    const toggle = e.target.closest('.filter-toggle');
+    const filter = e.target.closest('.filter');
+
+    // If clicking a toggle inside a filter, open that one and close others
+    if (toggle && filter) {
+      const isOpen = filter.classList.contains('open');
+      closeAll();
+      if (!isOpen) filter.classList.add('open');
+      return;
+    }
+
+    // Clicking outside any open filter closes all
+    if (!e.target.closest('.filter')) closeAll();
+  });
+
+  // Esc to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAll();
+  });
+
+  // Clear/Apply handlers
+  document.querySelectorAll('.filter .menu').forEach(menu => {
+    const root = menu.closest('.filter');
+    const summary = root.querySelector('[data-summary]');
+    const clearBtn = menu.querySelector('[data-clear]');
+    const applyBtn = menu.querySelector('[data-apply]');
+
+    // Clear: uncheck radios/checkboxes
+    if (clearBtn) clearBtn.addEventListener('click', () => {
+      menu.querySelectorAll('input[type=radio]').forEach(i => i.checked = false);
+      menu.querySelectorAll('input[type=checkbox]').forEach(i => i.checked = false);
+      if (summary) summary.textContent = 'Any';
+    });
+
+    // Apply: update summary text (very simple rules)
+    if (applyBtn) applyBtn.addEventListener('click', () => {
+      const checked = menu.querySelectorAll('input:checked');
+      let text = 'Any';
+      if (checked.length === 1) {
+        const label = menu.querySelector('label[for=' + checked[0].id + ']');
+        text = label ? label.textContent : 'Selected';
+      } else if (checked.length > 1) {
+        text = checked.length + ' selected';
+      }
+      if (summary) summary.textContent = text;
+      root.classList.remove('open');
+
+      // TODO: Hook real filtering logic here based on chosen values
+      // console.log('Selections for', root.dataset.filter, Array.from(checked).map(i => i.value || i.id));
+    });
+  });
+})();
+</script>
+</body>
+</html>
